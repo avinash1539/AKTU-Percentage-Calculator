@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <style type="text/css">
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+    .main_div{
+    width: 100%;
+    height: 75vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .box{
+    width: 400px;
+    position: absolute;
+    padding: 50px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    box-shadow: 5px 10px 5px white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
+    }
+    .box h1{
+    margin-bottom: 30px;
+    color: #fff;
+    text-align: center;
+    }
+    .box .inputBox{
+    position: relative;
+    }
+    .box .inputBox input{
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    }
+    .box .inputBox label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    letter-spacing: 1px;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    transition: 0.5s;
+    }
+    .box input[type="submit"]{
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: blue;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    }
+    .box .inputBox input:focus ~ label,
+    .box .inputBox input:valid ~ label{
+    top: -15px;
+    left: 0;
+    color: #03a9f4;
+    font-size: 12px;
+    }
+    #main_container{
+    background-image:url('{% static 'bg11.jpg' %}');
+    background-size : cover;
+    background-repeat:no-repeat;
+    /* clip-path: polygon(0% 0%,0% 75%,50% 100%,100% 75%,100% 0%); */
+    height:100vh;
+    width:100%;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="main_container">
+      <div class="container-fluid bg-dark pt-1 text-center">
+        <h1 style="color:#00ffea;">WELCOME ENGINEERS</h1>
+      </div>
+      <div class="main_div">
+        <div class="box">
+          <h3 class="text-center text-white">ENTER ALL MARKS</h3>
+          {% if TOTAL_PERCENTAGE %}
+            <h5 class="text-center" style="color:#21ff29;">TOTAL PERCENTAGE = {{TOTAL_PERCENTAGE}}</h5>
+          {% endif %}
+          <form action="{% url 'index' %}" method="post">
+            {% csrf_token %}
+            <div class="inputBox">
+              <input name="first" type="number" autocomplete="off" required>
+              <label>1st year</label>
+            </div>
+            <div class="inputBox">
+              <input type="number" autocomplete="off" name="second" required>
+              <label>2nd year</label>
+            </div>
+            <div class="inputBox">
+              <input type="number" autocomplete="off" name="third" required>
+              <label>3rd year</label>
+            </div>
+            <div class="inputBox">
+              <input type="number" autocomplete="off" name="fourth" required>
+              <label>4th year</label>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-primary">CALCULATE</button>
+            </div>
+          </form>
+        </div>
+      </div></div>
+    </body>
+  </html>
